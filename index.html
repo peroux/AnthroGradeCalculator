@@ -7,108 +7,114 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Grade Calculator</h1>
+  <h1>Anthro 121 Grade Calculator <br> Have a nice break!</h1>
   <div class="container">
+    <p class="explanation">
+      For each of the boxes below, input the score you received on the assignment or test.  
+      Some boxes, like Discussion Board Posts, can be found at the bottom of the Canvas page,  
+      while others, like the Race Assessment and Gender Assessment, may require finding the assignment to get the individual score.
+    </p>
+
     <form id="gradeForm">
       <p>
-        <label for="useClassTotals">Calculate Based on Graded Assignments?</label>
-        <select id="useClassTotals" name="useClassTotals">
-          <option value="y">Y (No Pre-Defined Totals)</option>
-          <option value="n">N (Use Pre-Defined Totals)</option>
-        </select>
+        <input type="checkbox" id="useClassTotals" name="useClassTotals" />
+        <label for="useClassTotals">Calculate based off total class points?</label>
       </p>
 
-      <h2>Class Engagement</h2>
+      <h2>Class Engagement (20%)</h2>
       <div class="input-group">
         <label>Points Received:</label>
         <input type="number" step="0.01" id="ce_numerator" required />
         <div class="optional-denominator">
-          <label>Total Points (if no class totals):</label>
-          <input type="number" step="0.01" id="ce_denominator" />
+          <label>Total Points:</label>
+          <input type="number" step="0.01" id="ce_denominator" required />
         </div>
       </div>
 
-      <h2>Discussion Board Posts</h2>
+      <h2>Discussion Board Posts and In-Class Assignments (30%)</h2>
+      <h3>Discussion Board Posts</h3>
       <div class="input-group">
         <label>Points Received:</label>
         <input type="number" step="0.01" id="db_numerator" required />
         <div class="optional-denominator">
-          <label>Total Points (if no class totals):</label>
-          <input type="number" step="0.01" id="db_denominator" />
+          <label>Total Points:</label>
+          <input type="number" step="0.01" id="db_denominator" required />
         </div>
       </div>
 
-      <h2>In-Class Assignments</h2>
+      <h3>Assignments</h3>
       <div class="input-group">
         <label>Points Received:</label>
         <input type="number" step="0.01" id="assign_numerator" required />
         <div class="optional-denominator">
-          <label>Total Points (if no class totals):</label>
-          <input type="number" step="0.01" id="assign_denominator" />
+          <label>Total Points:</label>
+          <input type="number" step="0.01" id="assign_denominator" required />
         </div>
       </div>
 
-      <h2>Podcast</h2>
+      <h2>Group Projects (25%)</h2>
+      <h3>Podcast</h3>
       <div class="input-group">
         <label>Points Received:</label>
         <input type="number" step="0.01" id="podcast_numerator" required />
         <div class="optional-denominator">
           <label>Total Points:</label>
-          <input type="number" step="0.01" id="podcast_denominator" />
+          <input type="number" step="0.01" id="podcast_denominator" required />
         </div>
       </div>
 
-      <h2>Group Projects</h2>
+      <h3>Cemetary Project</h3>
       <div class="input-group">
         <label>Points Received:</label>
         <input type="number" step="0.01" id="gp_numerator" required />
         <div class="optional-denominator">
-          <label>Total Points (if no class totals):</label>
-          <input type="number" step="0.01" id="gp_denominator" />
+          <label>Total Points:</label>
+          <input type="number" step="0.01" id="gp_denominator" required />
         </div>
       </div>
 
-      <h2>Human Variation Quiz</h2>
+      <h2>Quiz - Human Variation (10%)</h2>
       <div class="input-group">
         <label>Points Received:</label>
         <input type="number" step="0.01" id="quiz_numerator" required />
         <div class="optional-denominator">
-          <label>Total Points (if no class totals):</label>
-          <input type="number" step="0.01" id="quiz_denominator" />
+          <label>Total Points:</label>
+          <input type="number" step="0.01" id="quiz_denominator" required />
         </div>
       </div>
 
-      <h2>Race Assessment</h2>
+      <h2>Assessment Prompts (10%)</h2>
+      <h3>Race Assessment</h3>
       <div class="input-group">
         <label>Points Received:</label>
         <input type="number" step="0.01" id="race_numerator" required />
         <div class="optional-denominator">
           <label>Total Points:</label>
-          <input type="number" step="0.01" id="race_denominator" />
+          <input type="number" step="0.01" id="race_denominator" required />
         </div>
       </div>
 
-      <h2>Gender Assessment</h2>
+      <h3>Gender Assessment</h3>
       <div class="input-group">
         <label>Points Received:</label>
         <input type="number" step="0.01" id="gender_numerator" required />
         <div class="optional-denominator">
           <label>Total Points:</label>
-          <input type="number" step="0.01" id="gender_denominator" />
+          <input type="number" step="0.01" id="gender_denominator" required />
         </div>
       </div>
 
-      <h2>Oral Presentation</h2>
+      <h2>Oral Presentation (5%)</h2>
       <div class="input-group">
         <label>Points Received:</label>
         <input type="number" step="0.01" id="op_numerator" required />
         <div class="optional-denominator">
-          <label>Total Points (if no class totals):</label>
-          <input type="number" step="0.01" id="op_denominator" />
+          <label>Total Points:</label>
+          <input type="number" step="0.01" id="op_denominator" required />
         </div>
       </div>
 
-      <h2>Desired Grade</h2>
+      <h2>Desired Grade + Number of Extra Credit Posts to get it (may be inaccurate)</h2>
       <div class="input-group">
         <label>Enter Desired Grade (A, AB, B, BC, C, CD, D, F):</label>
         <input type="text" id="desired_grade" required />
