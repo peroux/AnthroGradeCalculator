@@ -99,109 +99,110 @@ const weights = {
     return Infinity;
   }
   
-  // Instead of DOMContentLoaded, use window.onload
-  window.onload = function() {
-    updateTotals();
+  // Immediately update totals once script loads (DOM elements are already present)
+  updateTotals();
   
-    document.getElementById('gradeForm').addEventListener('submit', function(e) {
-      e.preventDefault();
+  // Add event listeners
+  useClassTotalsCheckbox.addEventListener('change', updateTotals);
   
-      const ce_num = parseFloat(document.getElementById("ce_numerator").value);
-      const ce_den = parseFloat(document.getElementById("ce_denominator").value);
+  document.getElementById('gradeForm').addEventListener('submit', function(e) {
+    e.preventDefault();
   
-      const db_num = parseFloat(document.getElementById("db_numerator").value);
-      const db_den = parseFloat(document.getElementById("db_denominator").value);
+    const ce_num = parseFloat(document.getElementById("ce_numerator").value);
+    const ce_den = parseFloat(document.getElementById("ce_denominator").value);
   
-      const assign_num = parseFloat(document.getElementById("assign_numerator").value);
-      const assign_den = parseFloat(document.getElementById("assign_denominator").value);
+    const db_num = parseFloat(document.getElementById("db_numerator").value);
+    const db_den = parseFloat(document.getElementById("db_denominator").value);
   
-      const podcast_num = parseFloat(document.getElementById("podcast_numerator").value);
-      const podcast_den = parseFloat(document.getElementById("podcast_denominator").value);
+    const assign_num = parseFloat(document.getElementById("assign_numerator").value);
+    const assign_den = parseFloat(document.getElementById("assign_denominator").value);
   
-      const gp_num = parseFloat(document.getElementById("gp_numerator").value);
-      const gp_den = parseFloat(document.getElementById("gp_denominator").value);
+    const podcast_num = parseFloat(document.getElementById("podcast_numerator").value);
+    const podcast_den = parseFloat(document.getElementById("podcast_denominator").value);
   
-      const quiz_num = parseFloat(document.getElementById("quiz_numerator").value);
-      const quiz_den = parseFloat(document.getElementById("quiz_denominator").value);
+    const gp_num = parseFloat(document.getElementById("gp_numerator").value);
+    const gp_den = parseFloat(document.getElementById("gp_denominator").value);
   
-      const race_num = parseFloat(document.getElementById("race_numerator").value);
-      const race_den = parseFloat(document.getElementById("race_denominator").value);
+    const quiz_num = parseFloat(document.getElementById("quiz_numerator").value);
+    const quiz_den = parseFloat(document.getElementById("quiz_denominator").value);
   
-      const gender_num = parseFloat(document.getElementById("gender_numerator").value);
-      const gender_den = parseFloat(document.getElementById("gender_denominator").value);
+    const race_num = parseFloat(document.getElementById("race_numerator").value);
+    const race_den = parseFloat(document.getElementById("race_denominator").value);
   
-      const op_num = parseFloat(document.getElementById("op_numerator").value);
-      const op_den = parseFloat(document.getElementById("op_denominator").value);
+    const gender_num = parseFloat(document.getElementById("gender_numerator").value);
+    const gender_den = parseFloat(document.getElementById("gender_denominator").value);
   
-      const desired_grade = document.getElementById("desired_grade").value.trim().toUpperCase();
+    const op_num = parseFloat(document.getElementById("op_numerator").value);
+    const op_den = parseFloat(document.getElementById("op_denominator").value);
   
-      // Compute percentages
-      const ce_pct = calculatePercentage(ce_num, ce_den);
-      const db_pct = calculatePercentage(db_num, db_den);
-      const assign_pct = calculatePercentage(assign_num, assign_den);
-      const db_assign_combined = (db_pct + assign_pct) / 2;
+    const desired_grade = document.getElementById("desired_grade").value.trim().toUpperCase();
   
-      const podcast_pct = calculatePercentage(podcast_num, podcast_den);
-      const gp_pct = calculatePercentage(gp_num, gp_den);
-      const gp_combined = (podcast_pct + gp_pct) / 2;
+    // Compute percentages
+    const ce_pct = calculatePercentage(ce_num, ce_den);
+    const db_pct = calculatePercentage(db_num, db_den);
+    const assign_pct = calculatePercentage(assign_num, assign_den);
+    const db_assign_combined = (db_pct + assign_pct) / 2;
   
-      const quiz_pct = calculatePercentage(quiz_num, quiz_den);
+    const podcast_pct = calculatePercentage(podcast_num, podcast_den);
+    const gp_pct = calculatePercentage(gp_num, gp_den);
+    const gp_combined = (podcast_pct + gp_pct) / 2;
   
-      const race_pct = calculatePercentage(race_num, race_den);
-      const gender_pct = calculatePercentage(gender_num, gender_den);
-      const ap_combined = (race_pct + gender_pct) / 2;
+    const quiz_pct = calculatePercentage(quiz_num, quiz_den);
   
-      const op_pct = calculatePercentage(op_num, op_den);
+    const race_pct = calculatePercentage(race_num, race_den);
+    const gender_pct = calculatePercentage(gender_num, gender_den);
+    const ap_combined = (race_pct + gender_pct) / 2;
   
-      const grades = {
-        "Class Engagement": ce_pct,
-        "Discussion Board Posts and In-Class Assignments": db_assign_combined,
-        "Group Projects": gp_combined,
-        "Quiz": quiz_pct,
-        "Assessment Prompts": ap_combined,
-        "Oral Presentation": op_pct
-      };
+    const op_pct = calculatePercentage(op_num, op_den);
   
-      // Calculate weighted score
-      let weighted_score = 0;
-      let total_weight = 0;
-      for (let category in grades) {
-        if (weights[category] !== undefined && !isNaN(grades[category])) {
-          weighted_score += grades[category] * weights[category];
-          total_weight += weights[category];
-        }
+    const grades = {
+      "Class Engagement": ce_pct,
+      "Discussion Board Posts and In-Class Assignments": db_assign_combined,
+      "Group Projects": gp_combined,
+      "Quiz": quiz_pct,
+      "Assessment Prompts": ap_combined,
+      "Oral Presentation": op_pct
+    };
+  
+    // Calculate weighted score
+    let weighted_score = 0;
+    let total_weight = 0;
+    for (let category in grades) {
+      if (weights[category] !== undefined && !isNaN(grades[category])) {
+        weighted_score += grades[category] * weights[category];
+        total_weight += weights[category];
       }
+    }
   
-      const final_grade = (total_weight > 0) ? (weighted_score / total_weight) : 0;
+    const final_grade = (total_weight > 0) ? (weighted_score / total_weight) : 0;
   
-      let resultHTML = `<p>Your current final grade is: ${final_grade.toFixed(2)}%</p>`;
+    let resultHTML = `<p>Your current final grade is: ${final_grade.toFixed(2)}%</p>`;
   
-      if (desired_grade in grade_table) {
-        const target_range = grade_table[desired_grade];
-        const target_percentage = target_range[0];
+    if (desired_grade in grade_table) {
+      const target_range = grade_table[desired_grade];
+      const target_percentage = target_range[0];
   
-        const needed_posts = extraCreditNeeded(
-          target_percentage,
-          db_pct,
-          assign_pct,
-          ce_pct,
-          gp_combined,
-          quiz_pct,
-          ap_combined,
-          op_pct
-        );
+      const needed_posts = extraCreditNeeded(
+        target_percentage,
+        db_pct,
+        assign_pct,
+        ce_pct,
+        gp_combined,
+        quiz_pct,
+        ap_combined,
+        op_pct
+      );
   
-        if (needed_posts === Infinity) {
-          resultHTML += `<p>Even 200 extra posts can't reach a ${desired_grade}.</p>`;
-        } else if (needed_posts === 0) {
-          resultHTML += `<p>You already meet the requirements for a grade of ${desired_grade}. Keep up the good work!</p>`;
-        } else {
-          resultHTML += `<p>To achieve a grade of ${desired_grade}, you need at least ${needed_posts} extra credit discussion posts.</p>`;
-        }
+      if (needed_posts === Infinity) {
+        resultHTML += `<p>Even 200 extra posts can't reach a ${desired_grade}.</p>`;
+      } else if (needed_posts === 0) {
+        resultHTML += `<p>You already meet the requirements for a grade of ${desired_grade}. Keep up the good work!</p>`;
       } else {
-        resultHTML += `<p>Invalid grade entered. Please use one of: A, AB, B, BC, C, CD, D, F.</p>`;
+        resultHTML += `<p>To achieve a grade of ${desired_grade}, you need at least ${needed_posts} extra credit discussion posts.</p>`;
       }
+    } else {
+      resultHTML += `<p>Invalid grade entered. Please use one of: A, AB, B, BC, C, CD, D, F.</p>`;
+    }
   
-      document.getElementById('results').innerHTML = resultHTML;
-    });
-  };
+    document.getElementById('results').innerHTML = resultHTML;
+  });
