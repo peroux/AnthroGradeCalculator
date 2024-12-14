@@ -11,15 +11,14 @@ const weights = {
 // Total possible points per section
 const section_point_table = {
   "Class Engagement": 100,
-  "Discussion Board Posts": 260,
+  "Discussion Board Posts": 270,
   "In-Class Assignments": 200,
   "Group Projects": 100,
   "Quiz": 100,
-  "Assessment Prompts": 150,
   "Oral Presentation": 100,
   "Race Assessment": 50,
   "Gender Assessment": 50,
-  "Podcast": 170
+  "Podcast": 120
 };
 
 // Grade boundaries
