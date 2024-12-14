@@ -215,7 +215,7 @@ document.getElementById('gradeForm').addEventListener('submit', function(e) {
     if (needed_posts === Infinity) {
       resultHTML += `<p>Even 200 extra posts can't reach a ${desired_grade}.</p>`;
     } else if (needed_posts === 0) {
-      resultHTML += `<p>You already meet the requirements for a grade of ${desired_grade}. Keep up the good work!</p>`;
+      resultHTML += `<p>You already meet the requirements for a grade of ${desired_grade}. Congrats!!</p>`;
     } else {
       resultHTML += `<p>To achieve a grade of ${desired_grade}, you need at least ${needed_posts} extra credit discussion posts.</p>`;
     }
