@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Grade Calculator</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -16,15 +16,12 @@
     </p>
 
     <form id="gradeForm">
-
       <h2>Class Engagement (20%)</h2>
       <div class="input-group">
         <label>Points Received:</label>
         <input type="number" step="0.01" id="ce_numerator" required />
-        <div class="optional-denominator">
-          <label>Total Points:</label>
-          <input type="number" step="0.01" id="ce_denominator" required />
-        </div>
+        <label>Total Points:</label>
+        <input type="number" step="0.01" id="ce_denominator" required />
       </div>
 
       <h2>Discussion Board Posts and In-Class Assignments (30%)</h2>
@@ -32,20 +29,16 @@
       <div class="input-group">
         <label>Points Received:</label>
         <input type="number" step="0.01" id="db_numerator" required />
-        <div class="optional-denominator">
-          <label>Total Points:</label>
-          <input type="number" step="0.01" id="db_denominator" required />
-        </div>
+        <label>Total Points:</label>
+        <input type="number" step="0.01" id="db_denominator" required />
       </div>
 
       <h3>Assignments</h3>
       <div class="input-group">
         <label>Points Received:</label>
         <input type="number" step="0.01" id="assign_numerator" required />
-        <div class="optional-denominator">
-          <label>Total Points:</label>
-          <input type="number" step="0.01" id="assign_denominator" required />
-        </div>
+        <label>Total Points:</label>
+        <input type="number" step="0.01" id="assign_denominator" required />
       </div>
 
       <h2>Group Projects (25%)</h2>
@@ -53,30 +46,24 @@
       <div class="input-group">
         <label>Points Received:</label>
         <input type="number" step="0.01" id="podcast_numerator" required />
-        <div class="optional-denominator">
-          <label>Total Points:</label>
-          <input type="number" step="0.01" id="podcast_denominator" required />
-        </div>
+        <label>Total Points:</label>
+        <input type="number" step="0.01" id="podcast_denominator" required />
       </div>
 
-      <h3>Cemetary Project</h3>
+      <h3>Cemetery Project</h3>
       <div class="input-group">
         <label>Points Received:</label>
         <input type="number" step="0.01" id="gp_numerator" required />
-        <div class="optional-denominator">
-          <label>Total Points:</label>
-          <input type="number" step="0.01" id="gp_denominator" required />
-        </div>
+        <label>Total Points:</label>
+        <input type="number" step="0.01" id="gp_denominator" required />
       </div>
 
       <h2>Quiz - Human Variation (10%)</h2>
       <div class="input-group">
         <label>Points Received:</label>
         <input type="number" step="0.01" id="quiz_numerator" required />
-        <div class="optional-denominator">
-          <label>Total Points:</label>
-          <input type="number" step="0.01" id="quiz_denominator" required />
-        </div>
+        <label>Total Points:</label>
+        <input type="number" step="0.01" id="quiz_denominator" required />
       </div>
 
       <h2>Assessment Prompts (10%)</h2>
@@ -84,30 +71,24 @@
       <div class="input-group">
         <label>Points Received:</label>
         <input type="number" step="0.01" id="race_numerator" required />
-        <div class="optional-denominator">
-          <label>Total Points:</label>
-          <input type="number" step="0.01" id="race_denominator" required />
-        </div>
+        <label>Total Points:</label>
+        <input type="number" step="0.01" id="race_denominator" required />
       </div>
 
       <h3>Gender Assessment</h3>
       <div class="input-group">
         <label>Points Received:</label>
         <input type="number" step="0.01" id="gender_numerator" required />
-        <div class="optional-denominator">
-          <label>Total Points:</label>
-          <input type="number" step="0.01" id="gender_denominator" required />
-        </div>
+        <label>Total Points:</label>
+        <input type="number" step="0.01" id="gender_denominator" required />
       </div>
 
       <h2>Oral Presentation (5%)</h2>
       <div class="input-group">
         <label>Points Received:</label>
         <input type="number" step="0.01" id="op_numerator" required />
-        <div class="optional-denominator">
-          <label>Total Points:</label>
-          <input type="number" step="0.01" id="op_denominator" required />
-        </div>
+        <label>Total Points:</label>
+        <input type="number" step="0.01" id="op_denominator" required />
       </div>
 
       <h2>Desired Grade + Number of Extra Credit Posts to get it (may be inaccurate)</h2>
@@ -115,16 +96,12 @@
         <label>Enter Desired Grade (A, AB, B, BC, C, CD, D, F):</label>
         <input type="text" id="desired_grade" required />
       </div>
-
-      <button type="submit">Calculate</button>
     </form>
 
     <div id="results" class="results">
       <!-- Results will be shown here -->
     </div>
   </div>
-
-  <!-- Load script at the end so DOM is ready -->
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
